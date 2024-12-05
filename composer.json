@@ -17,7 +17,8 @@
         "oneduo/nova-file-manager": "^0.12.4",
         "outl1ne/nova-sortable": "^3.4",
         "spatie/laravel-medialibrary": "^11.10",
-        "timothyasp/nova-color-field": "^2.0"
+        "timothyasp/nova-color-field": "^2.0",
+        "whitecube/nova-flexible-content": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

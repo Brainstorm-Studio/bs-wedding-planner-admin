@@ -53,15 +53,11 @@ return [
             'throw' => false,
         ],
 
-        's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        'uploads' => [
+            'driver' => 'local',
+            'root' => storage_path('app/uploads'),
+            'url' => env('APP_URL') . '/uploads',
+            'visibility' => 'public',
             'throw' => false,
         ],
 
@@ -78,37 +74,50 @@ return [
         ],
 
         'audio' => [
-        'driver'     => 'local',
-        'root'       => public_path('uploads/audio'),
-        'url'        => env('APP_URL') . '/uploads/audio',
+            'driver' => 'local',
+            'root' => public_path('uploads/audio'),
+            'url' => env('APP_URL') . '/uploads/audio',
         ],
 
         'file' => [
-        'driver'     => 'local',
-        'root'       => public_path('uploads/file'),
-        'url'        => env('APP_URL') . '/uploads/file',
-    ]
+            'driver' => 'local',
+            'root' => public_path('uploads/file'),
+            'url' => env('APP_URL') . '/uploads/file',
+        ],
 
+        's3' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL'),
+            'endpoint' => env('AWS_ENDPOINT'),
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
     | Symbolic Links
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the symbolic links that will be created when the
-    | `storage:link` Artisan command is executed. The array keys should be
-    | the locations of the links and the values should be their targets.
-    |
-    */
+|--------------------------------------------------------------------------
+|
+| Here you may configure the symbolic links that will be created when the
+| `storage:link` Artisan command is executed. The array keys should be
+| the locations of the links and the values should be their targets.
+|
+*/
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
-        public_path('media') => storage_path('app/media'),
-        public_path('image') => storage_path('app/uploads/image'),
-        public_path('video') => storage_path('app/uploads/video'),
-        public_path('audio') => storage_path('app/uploads/audio'),
-        public_path('file') => storage_path('app/uploads/file'),
+        public_path('storage') => storage_path('app\public'),
+        public_path('media') => storage_path('app\media'),
+        public_path('uploads') => storage_path('app\uploads'),
+        public_path('image') => storage_path('uploads\image'),
+        public_path('video') => storage_path('uploads\video'),
+        public_path('audio') => storage_path('uploads\audio'),
+        public_path('file') => storage_path('uploads\file'),
     ],
 
 ];

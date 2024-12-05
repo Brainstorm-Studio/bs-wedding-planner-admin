@@ -112,10 +112,6 @@ return [
 
             'content-lang' => 'en',
 
-            'force-paste-as-plain-text' => false,
-
-            'alert-before-unsaved-changes' => true,
-
             'ui-language' => [
                 'name'   => 'en',
 
@@ -210,7 +206,6 @@ return [
                 '|',
                 'codeBlock',
                 'blockQuote',
-                'emoji',
                 'bulletedList',
                 'numberedList',
                 '|',
@@ -496,6 +491,251 @@ return [
 
                 'mediaEmbed' => []
             ],
-        ]
+        ],
+
+        'toolbar-2' => [
+            'height' => 400,
+
+            'content-lang' => 'es',
+
+            'ui-language' => [
+                'name' => 'es',
+
+                /**
+                 * Example 1: asset('js/ckeditor-fa.js')
+                 * Example 2: 'https://cdn.ckeditor.com/ckeditor5/34.0.0/decoupled-document/translations/fa.js'
+                 */
+                'script' => null
+            ],
+
+            'text-part-language' => [
+                ['title' => 'Farsi', 'languageCode' => 'fa'],
+                ['title' => 'English', 'languageCode' => 'en'],
+                ['title' => 'Español', 'languageCode' => 'es']
+            ],
+
+            /*
+             * General HTML Support
+             *
+             * @see https://ckeditor.com/docs/ckeditor5/latest/features/html/general-html-support.html#configuration
+             */
+
+            'html-support' => [
+                'allow' => [
+                    [
+                        'name' => 'div',
+                        'classes' => true,
+                    ],
+                    [
+                        'name' => '/^(div|section|article)$/'
+                    ]
+                ],
+
+                'disallow' => []
+            ],
+
+            'should-not-group-when-full' => false,
+
+            'browser' => [
+                'image' => true,
+                'video' => false,
+                'audio' => false,
+                'file' => false
+            ],
+
+            'image' => [
+                /*
+                 * Insert images directly into the editor by pasting or dragging.
+                 */
+
+                'insert' => [
+                    'types' => ['gif', 'png', 'jpg', 'jpeg', 'webp'],
+                    'size' => 1500 // kb, nullable
+                ]
+            ],
+
+            'snippets' => [
+                ['name' => 'Image', 'html' => 'ckeditor.image'],
+                ['name' => 'Media', 'html' => 'ckeditor.media'],
+                ['name' => 'Table', 'html' => 'ckeditor.table']
+            ],
+
+            'items' => [
+                'heading',
+                '|',
+                'fontSize',
+                '|',
+                'link',
+                '|',
+                'bold',
+                'italic',
+                'alignment',
+                'horizontalLine',
+                'underline',
+                'strikethrough',
+                'removeFormat',
+                '|',
+                'bulletedList',
+                'numberedList',
+                'insertTable',
+                '|',
+                'undo',
+                'redo',
+                '|',
+                'sourceEditing'
+            ],
+
+            'options' => [
+                'headings' => [
+                    [
+                        'model' => 'paragraph',
+                        'title' => 'Paragraph',
+                        'class' => 'ck-heading_paragraph',
+                    ],
+                    [
+                        'model' => 'heading2',
+                        'view' => 'h2',
+                        'title' => 'Heading 2',
+                        'class' => 'ck-heading_heading2',
+                    ],
+                    [
+                        'model' => 'heading3',
+                        'view' => 'h3',
+                        'title' => 'Heading 3',
+                        'class' => 'ck-heading_heading3',
+                    ],
+                    [
+                        'model' => 'heading4',
+                        'view' => 'h4',
+                        'title' => 'Heading 4',
+                        'class' => 'ck-heading_heading4',
+                    ],
+                    [
+                        'model' => 'heading5',
+                        'view' => 'h5',
+                        'title' => 'Heading 5',
+                        'class' => 'ck-heading_heading5',
+                    ],
+                    [
+                        'model' => 'heading6',
+                        'view' => 'h6',
+                        'title' => 'Heading 6',
+                        'class' => 'ck-heading_heading6',
+                    ]
+                ],
+            ],
+        ],
+
+        'toolbar-3' => [
+            'height' => 400,
+
+            'content-lang' => 'es',
+
+            'ui-language' => [
+                'name' => 'es',
+                'script' => null
+            ],
+
+            'text-part-language' => [
+                ['title' => 'Español', 'languageCode' => 'es']
+            ],
+
+            'html-support' => [
+                'allow' => [
+                    [
+                        'name' => 'div',
+                        'classes' => true,
+                    ],
+                    [
+                        'name' => '/^(div|section|article)$/'
+                    ]
+                ],
+
+                'disallow' => []
+            ],
+
+            'should-not-group-when-full' => false,
+
+            'browser' => [
+                'image' => true,
+                'video' => false,
+                'audio' => false,
+                'file' => false
+            ],
+
+            'image' => [
+                /*
+                 * Insert images directly into the editor by pasting or dragging.
+                 */
+
+                'insert' => [
+                    'types' => ['gif', 'png', 'jpg', 'jpeg', 'webp'],
+                    'size' => 1500 // kb, nullable
+                ]
+            ],
+
+            'snippets' => [
+                ['name' => 'Image', 'html' => 'ckeditor.image'],
+                ['name' => 'Media', 'html' => 'ckeditor.media'],
+                ['name' => 'Table', 'html' => 'ckeditor.table']
+            ],
+
+            'items' => [
+                'heading',
+                '|',
+                'link',
+                '|',
+                'bold',
+                'italic',
+                'underline',
+                'strikethrough',
+                'removeFormat',
+                '|',
+                'undo',
+                'redo',
+                '|',
+                'sourceEditing'
+            ],
+
+            'options' => [
+                'headings' => [
+                    [
+                        'model' => 'paragraph',
+                        'title' => 'Paragraph',
+                        'class' => 'ck-heading_paragraph',
+                    ],
+                    [
+                        'model' => 'heading2',
+                        'view' => 'h2',
+                        'title' => 'Heading 2',
+                        'class' => 'ck-heading_heading2',
+                    ],
+                    [
+                        'model' => 'heading3',
+                        'view' => 'h3',
+                        'title' => 'Heading 3',
+                        'class' => 'ck-heading_heading3',
+                    ],
+                    [
+                        'model' => 'heading4',
+                        'view' => 'h4',
+                        'title' => 'Heading 4',
+                        'class' => 'ck-heading_heading4',
+                    ],
+                    [
+                        'model' => 'heading5',
+                        'view' => 'h5',
+                        'title' => 'Heading 5',
+                        'class' => 'ck-heading_heading5',
+                    ],
+                    [
+                        'model' => 'heading6',
+                        'view' => 'h6',
+                        'title' => 'Heading 6',
+                        'class' => 'ck-heading_heading6',
+                    ]
+                ],
+            ],
+        ],
     ],
 ];
