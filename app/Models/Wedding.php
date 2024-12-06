@@ -73,12 +73,12 @@ class Wedding extends Model implements HasMedia
                     ->height(100);
             });
     }
-    public function getTripImageAttribute()
+    public function getMainImageAttribute()
     {
         return $this->getFirstMediaUrl('main_image', 'main_op');
     }
 
-    public function getTripGalleryAttribute()
+    public function getGalleryAttribute()
     {
         return $this->getMedia('gallery');
     }

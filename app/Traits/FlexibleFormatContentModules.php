@@ -135,6 +135,18 @@ trait FlexibleFormatContentModules
                     );
                     $content = $content_feature_box;
                     break;
+                case 'Text':
+                    $couple_box = $value['attributes'];
+                    $couple_box_items = [];
+                    foreach ($couple_box as $key_couple => $couple_item) {
+                        $item_couple = collect([
+                            'order' => $key_couple,
+                            'title' => $couple_item['attributes']['title'],
+                            'name' => $couple_item['attributes']['name'],
+                            'show_title' => $couple_item['attributes']['show_title'],
+                        ]);
+                        $couple_box_items[] = $item_couple;
+                    }
                 default:
                     $content = $value['attributes'];
                     break;
