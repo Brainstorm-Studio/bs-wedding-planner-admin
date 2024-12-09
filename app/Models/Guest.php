@@ -38,4 +38,9 @@ class Guest extends Model
     {
         return $this->hasMany(WeddingAssignment::class);
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

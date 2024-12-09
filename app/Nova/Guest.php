@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -47,7 +48,11 @@ class Guest extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()->sortable()
+                ->hideFromIndex(),
+            BelongsTo::make('Country', 'country', Country::class)
+                ->hideFromIndex()
+                ->withoutTrashed(),
             BelongsTo::make('Guest Type', 'guest_type', GuestType::class)
                 ->withoutTrashed(),
             BelongsTo::make('Wedding', 'wedding', Wedding::class)
@@ -59,18 +64,22 @@ class Guest extends Resource
                 ->rules('max:255'),
             Text::make('Email', 'email')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'email', 'max:255'),
             Text::make('Phone', 'phone')
+                ->hideFromIndex()
                 ->sortable()
                 ->rules('required', 'max:255'),
             Boolean::make('RSVP', 'rsvp')
                 ->sortable()
                 ->rules('required'),
-            DateTime::make('RSVP Date', 'rsvp_date')
-                ->sortable(),
             Boolean::make('With Plus One', 'with_plus_one')
                 ->sortable()
                 ->default(false),
+            Number::make('Plus One Count', 'total')
+                ->hideFromIndex()
+                ->sortable()
+                ->default(0),
             Boolean::make('Allergies', 'has_allergies')
                 ->sortable()
                 ->default(false),
@@ -80,6 +89,8 @@ class Guest extends Resource
             Trix::make('Note', 'note')
                 ->rules('max:255')
                 ->hideFromIndex(),
+            DateTime::make('RSVP Date', 'rsvp_date')
+                ->sortable(),
         ];
     }
 

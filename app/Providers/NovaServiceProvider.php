@@ -2,7 +2,14 @@
 
 namespace App\Providers;
 
+use App\Nova\User;
+use App\Nova\Country;
+use App\Nova\Wedding;
 use Laravel\Nova\Nova;
+use App\Nova\GuestType;
+use App\Nova\Dashboards\Main;
+use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
 use Oneduo\NovaFileManager\NovaFileManager;
@@ -22,6 +29,24 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Nova::footer(function ($request) {
             return Blade::render('nova.footer');
         });
+        Nova::mainMenu(function ($request) {
+            return [
+                MenuSection::dashboard(Main::class)->icon('chart-bar'),
+                MenuSection::make('Admin', [
+                    MenuItem::resource(User::class),
+                    MenuItem::resource(Country::class),
+                    MenuItem::resource(GuestType::class),
+                ])->icon('adjustments')->collapsable(),
+                MenuSection::make('Weddiings', [
+                    MenuItem::resource(Wedding::class)
+                ])->collapsable(),
+                MenuSection::make('Log Viwer', [
+                    MenuItem::link('Dashboard', '/nova-logs/dashboard'),
+                    MenuItem::link('Logs', '/nova-logs/list'),
+                ])->collapsable()
+                    ->icon('document-text'),
+            ];
+        });
     }
 
     /**
@@ -32,9 +57,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -74,6 +99,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             NovaFileManager::make(),
+            new \PhpJunior\NovaLogViewer\Tool(),
         ];
     }
 

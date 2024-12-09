@@ -83,4 +83,9 @@ class Wedding extends Model implements HasMedia
         return $this->getMedia('gallery');
     }
 
+    public function guests()
+    {
+        return $this->hasMany(Guest::class);
+    }
+
 }

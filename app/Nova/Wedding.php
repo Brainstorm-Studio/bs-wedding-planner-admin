@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Textarea;
 use App\Nova\Flexible\Layouts\TabsLayout;
@@ -72,6 +73,7 @@ class Wedding extends Resource
             Text::make('Slug')
                 ->exceptOnForms(),
             Flexible::make('Couple Names', 'couple_name')
+                ->hideFromDetail()
                 ->addLayout('Text', 'Text', [
                     Select::make('Title')
                         ->options([
@@ -93,6 +95,7 @@ class Wedding extends Resource
                 ->confirmRemove()
                 ->stacked(),
             Flexible::make('Content', 'content')
+                ->hideFromDetail()
                 ->fullWidth()
                 ->menu(
                     'flexible-search-menu',
@@ -124,6 +127,7 @@ class Wedding extends Resource
                 ->stacked()
                 ->limit(1),
             Flexible::make('Location', 'location')
+                ->hideFromDetail()
                 ->fullWidth()
                 ->addLayout('location information', 'location_information', [
                     Text::make('Place', 'place')
@@ -133,8 +137,13 @@ class Wedding extends Resource
                     Url::make('Waze Url', 'waze'),
                 ])->button('Add Date')->limit(1),
             Images::make('Imagen Principal', 'main_image')
+                ->hideFromDetail()
                 ->hideFromIndex(),
             Images::make('Galería de Imágenes', 'gallery')
+                ->hideFromDetail()
+                ->hideFromIndex(),
+
+            HasMany::make('Guests', 'guests', Guest::class),
         ];
     }
 
