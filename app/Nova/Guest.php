@@ -2,14 +2,16 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
+use App\Nova\Actions\SendWhatsapp;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Guest extends Resource
@@ -51,7 +53,6 @@ class Guest extends Resource
             ID::make()->sortable()
                 ->hideFromIndex(),
             BelongsTo::make('Country', 'country', Country::class)
-                ->hideFromIndex()
                 ->withoutTrashed(),
             BelongsTo::make('Guest Type', 'guest_type', GuestType::class)
                 ->withoutTrashed(),
@@ -62,10 +63,9 @@ class Guest extends Resource
                 ->rules('required', 'max:255'),
             Text::make('Couple Name', 'couple_name')
                 ->rules('max:255'),
-            Text::make('Email', 'email')
+            Email::make('Email', 'email')
                 ->sortable()
-                ->hideFromIndex()
-                ->rules('required', 'email', 'max:255'),
+                ->hideFromIndex(),
             Text::make('Phone', 'phone')
                 ->hideFromIndex()
                 ->sortable()
@@ -135,6 +135,12 @@ class Guest extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            (new SendWhatsapp)
+            ->confirmText('Estimad@ '. $this->guest_name . ' ' .$this->couple_name . ' , tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/')
+            ->confirmButtonText('Enviar Whatsapp')
+            ->cancelButtonText('Cancelar')
+            ->onlyInline(),
+        ];
     }
 }
