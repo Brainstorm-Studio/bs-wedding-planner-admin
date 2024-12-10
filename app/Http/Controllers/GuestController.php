@@ -49,6 +49,7 @@ class GuestController extends Controller
         }
 
         $guestData = [
+            'id' => $guest->id,
             'name' => $guest->guest_name,
             'rsvp' => $guest->rsvp,
             'couple' => $guest->couple_name ?? '',
@@ -59,6 +60,34 @@ class GuestController extends Controller
         ];
 
         return $guestData;
+    }
+
+    public function updateGuest(Request $request)
+    {
+        try {
+            $id = $request->input('guest_id');
+        $rsvp = $request->input('rsvp');
+        $total_confirmed = $request->input('total_confirmed');
+        $rsvp_date = now();
+
+        $guest = Guest::find($id);
+
+        if (!$guest) {
+            return response()->json(['message' => 'Guest not found'], 404);
+        }
+
+        $guest->rsvp = $rsvp;
+        $guest->total_confirmed = $total_confirmed;
+        $guest->rsvp_date = $rsvp_date;
+
+        $guest->save();
+
+        return response()->json(['message' => 'Guest updated successfully'], 200);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error updating guest'], 500);
+        }
+
     }
 
 

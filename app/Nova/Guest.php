@@ -76,10 +76,10 @@ class Guest extends Resource
             Boolean::make('With Plus One', 'with_plus_one')
                 ->sortable()
                 ->default(false),
-            Number::make('Plus One Count', 'plus_one_count')
-                ->hideFromIndex()
+            Number::make('Total invited', 'plus_one_count')
                 ->sortable()
                 ->default(0),
+            Number::make('Total Confirmed', 'total_confirmed'),
             Boolean::make('Allergies', 'has_allergies')
                 ->sortable()
                 ->default(false),

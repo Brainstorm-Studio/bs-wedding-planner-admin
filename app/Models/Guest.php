@@ -21,7 +21,13 @@ class Guest extends Model
         'with_plus_one',
         'allergies',
         'rsvp_date',
-        'notes'
+        'notes',
+        'plus_one_count',
+        'total_confirmed'
+    ];
+
+    protected $casts = [
+        'rsvp_date' => 'datetime',
     ];
 
     public function guest_type()

@@ -8,3 +8,4 @@ use App\Http\Controllers\WeddingController;
 Route::get('/wedding/{slug}', [WeddingController::class, 'getWeddingBySlug']);
 Route::get('/guests/{slug}', [GuestController::class, 'getGuestsByWedding']);
 Route::get('/search-guest/{slug}/{phone}', [GuestController::class, 'getGuestByWeddingAndPhone']);
+Route::post('/update-guest', [GuestController::class, 'updateGuest']);
