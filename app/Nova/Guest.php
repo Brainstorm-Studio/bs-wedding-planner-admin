@@ -6,13 +6,14 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use App\Nova\Actions\SendWhatsapp;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Guest extends Resource
 {
@@ -141,6 +142,9 @@ class Guest extends Resource
             ->confirmButtonText('Enviar Whatsapp')
             ->cancelButtonText('Cancelar')
             ->onlyInline(),
+            new DownloadExcel,
+
+
         ];
     }
 }
