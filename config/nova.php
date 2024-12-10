@@ -203,4 +203,10 @@ return [
         'stopped' => '/',
     ],
 
+
+    /**
+     * Users has access to Nova
+     */
+    'nova_users' => env('SUPER_ADMIN_EMAIL','')
+
 ];
