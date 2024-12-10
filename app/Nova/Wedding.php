@@ -6,7 +6,6 @@ namespace App\Nova;
 use Carbon\Carbon;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Url;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
@@ -30,6 +29,7 @@ use App\Nova\Flexible\Layouts\HistoryCardLayout;
 use App\Nova\Flexible\Layouts\ProgressBarLayout;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use App\Nova\Flexible\Layouts\WeddingCopiesLayout;
+use Laravel\Nova\Fields\URL;
 
 class Wedding extends Resource
 {
@@ -133,8 +133,8 @@ class Wedding extends Resource
                     Text::make('Place', 'place')
                         ->rules('required', 'max:255'),
                     Text::make('Address', 'address'),
-                    Url::make('Google Maps Url', 'google_maps'),
-                    Url::make('Waze Url', 'waze'),
+                    URL::make('Google Maps Url', 'google_maps'),
+                    URL::make('Waze Url', 'waze'),
                 ])->button('Add Date')->limit(1),
             Images::make('Imagen Principal', 'main_image')
                 ->hideFromDetail()
