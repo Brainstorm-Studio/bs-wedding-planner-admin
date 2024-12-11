@@ -67,8 +67,8 @@ class GuestController extends Controller
         try {
             $id = $request->input('guest_id');
             $rsvp = $request->input('rsvp');
-            $email = $request->input('email');
-            // $total_confirmed = $request->input('total_confirmed');
+            // $email = $request->input('email');
+            $total_confirmed = $request->input('total_confirmed');
             $has_allergies = $request->input('has_allergies');
             $rsvp_date = now();
 
@@ -79,8 +79,8 @@ class GuestController extends Controller
             }
 
             $guest->rsvp = $rsvp;
-            // $guest->total_confirmed = $total_confirmed;
-            $guest->email = $email;
+            $guest->total_confirmed = $total_confirmed;
+            // $guest->email = $email;
             $guest->has_allergies = $has_allergies;
             $guest->rsvp_date = $rsvp_date;
 
