@@ -138,9 +138,9 @@ class Guest extends Resource
     {
         $message = '';
         if($this->with_plus_one) {
-            $mesage = 'Queridos '. $this->guest_name . ' ' .$this->couple_name . ' , enemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+            $mesage = 'Queridos '. $this->guest_name . ' ' .$this->couple_name . ' , tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
         } else {
-            $message = 'Querido '. $this->guest_name . ' ' .$this->couple_name . ' , enemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+            $message = 'Querido '. $this->guest_name . ' ' .$this->couple_name . ' , tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
         }
 
 
