@@ -136,9 +136,16 @@ class Guest extends Resource
      */
     public function actions(NovaRequest $request)
     {
+        if($this->with_plus_one) {
+            $mesage = 'Queridos '. $this->guest_name . ' ' .$this->couple_name . ' , enemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+        } else {
+            $message = 'Querido '. $this->guest_name . ' ' .$this->couple_name . ' , enemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+        }
+
+
         return [
             (new SendWhatsapp)
-            ->confirmText('Estimad@ '. $this->guest_name . ' ' .$this->couple_name . ' , tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/')
+            ->confirmText($message)
             ->confirmButtonText('Enviar Whatsapp')
             ->cancelButtonText('Cancelar')
             ->onlyInline(),
