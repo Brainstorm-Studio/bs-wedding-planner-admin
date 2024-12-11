@@ -30,7 +30,7 @@ class WeddingController extends Controller
             'gallery' => $wedding->gallery
                 ->map(function ($item) {
                     return [
-                        'gallery_op' => $item->getUrl('gallery_op'),
+                        'gallery_op' => $item->getUrl(),
                     ];
                 }),
         ]);
