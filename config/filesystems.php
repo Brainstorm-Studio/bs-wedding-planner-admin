@@ -111,13 +111,13 @@ return [
 */
 
     'links' => [
-        public_path('storage') => storage_path('app\public'),
-        public_path('media') => storage_path('app\media'),
-        public_path('uploads') => storage_path('app\uploads'),
-        public_path('image') => storage_path('uploads\image'),
-        public_path('video') => storage_path('uploads\video'),
-        public_path('audio') => storage_path('uploads\audio'),
-        public_path('file') => storage_path('uploads\file'),
+        public_path('storage') => storage_path('app/public'),
+        public_path('media') => storage_path('app/media'),
+        public_path('uploads') => storage_path('app/uploads'),
+        public_path('image') => storage_path('uploads/image'),
+        public_path('video') => storage_path('uploads/video'),
+        public_path('audio') => storage_path('uploads/audio'),
+        public_path('file') => storage_path('uploads/file'),
     ],
 
 ];
