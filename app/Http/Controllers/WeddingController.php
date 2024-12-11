@@ -33,8 +33,28 @@ class WeddingController extends Controller
                         'gallery_op' => $item->getUrl(),
                     ];
                 }),
+            'country' => $this->filterCountries($wedding->guests),
+            // 'countries' => $wedding->guests
+            //     ->map(function ($item) {
+            //         return [
+            //             'country' => $item->country->name,
+            //             'phone_code' => '+'. $item->country->phone_code,
+            //         ];
+            //     }),
         ]);
 
         return $weddingData;
     }
+
+    public function filterCountries($data){
+        $uniqueCountries = $data;
+        return $uniqueCountries->unique('country_id')
+            ->map(function ($item) {
+                return [
+                    'country' => $item->country->name,
+                    'phone_code' => '+'. $item->country->phone_code,
+                ];
+            }) ->sortBy('country')->values();
+    }
+
 }
