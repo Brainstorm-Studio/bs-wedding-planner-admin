@@ -34,7 +34,14 @@ class SendWhatsapp extends Action
         $whatsapp_number = $country_code . $guest_phone;
         $guest_name = $model->guest_name . ' ' . $model->couple_name;
         $invite_url = 'https://www.nuestraboda-esteban-y-fernanda.com/';
-        $header_message = 'Estimad@ ' . '*' . $guest_name . '*' . ', tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+        $has_plus_one = $model->with_plus_one;
+
+        if ($has_plus_one) {
+            $header_message = 'Queridos ' . '*' . $guest_name . '*' . ', tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+        } else
+        {
+            $header_message = 'Querido ' . '*' . $guest_name . '*' . ', tenemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
+        }
         $whatsapp_url = 'https://api.whatsapp.com/send?phone=' . $whatsapp_number . '&text=' . $header_message . '%0A' . urlencode($fields->message);
 
             return Action::openInNewTab($whatsapp_url);
