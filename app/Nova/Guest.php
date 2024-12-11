@@ -136,6 +136,7 @@ class Guest extends Resource
      */
     public function actions(NovaRequest $request)
     {
+        $message = '';
         if($this->with_plus_one) {
             $mesage = 'Queridos '. $this->guest_name . ' ' .$this->couple_name . ' , enemos el honor de invitarlos a nuestra boda. Por favor confirma tu asistencia en el siguiente enlace: https://www.nuestraboda-esteban-y-fernanda.com/';
         } else {
