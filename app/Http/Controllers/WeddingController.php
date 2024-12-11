@@ -33,14 +33,7 @@ class WeddingController extends Controller
                         'gallery_op' => $item->getUrl(),
                     ];
                 }),
-            'country' => $this->filterCountries($wedding->guests),
-            // 'countries' => $wedding->guests
-            //     ->map(function ($item) {
-            //         return [
-            //             'country' => $item->country->name,
-            //             'phone_code' => '+'. $item->country->phone_code,
-            //         ];
-            //     }),
+            'guest_countries' => $this->filterCountries($wedding->guests),
         ]);
 
         return $weddingData;
