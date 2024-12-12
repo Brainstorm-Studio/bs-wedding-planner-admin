@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Nova\User;
+use App\Nova\Guest;
 use App\Nova\Country;
 use App\Nova\Wedding;
 use Laravel\Nova\Nova;
@@ -38,7 +39,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(GuestType::class),
                 ])->icon('adjustments')->collapsable(),
                 MenuSection::make('Weddiings', [
-                    MenuItem::resource(Wedding::class)
+                    MenuItem::resource(Wedding::class),
+                    MenuItem::resource(Guest::class)
                 ])->collapsable(),
                 MenuSection::make('Log Viwer', [
                     MenuItem::link('Dashboard', '/nova-logs/dashboard'),
